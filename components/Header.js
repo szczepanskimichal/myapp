@@ -69,7 +69,10 @@ export default function Header() {
           isMobileMenuOpen ? "bg-black" : "bg-secondary"
         }`}
       >
-        <div onClick={() => setIsMobileMenuOpen(true)}>
+        <div
+          onClick={() => setIsMobileMenuOpen(true)}
+          className="cursor-pointer"
+        >
           <Hamburger />
         </div>
         <Link href={"/"}>Ecommerce</Link>
@@ -92,7 +95,7 @@ export default function Header() {
             >
               <div
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute top-5 right-5"
+                className="absolute top-5 right-5 cursor-pointer"
               >
                 <CloseIcon />
               </div>

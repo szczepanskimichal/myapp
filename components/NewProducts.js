@@ -1,4 +1,4 @@
-import ProductDiv from "./ProductDiv";
+import ProductDiv from "@/components/ProductDiv";
 
 export default function NewProducts({ products }) {
   return (

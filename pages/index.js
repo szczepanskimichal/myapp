@@ -3,12 +3,13 @@ import Featured from "../components/Featured";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import NewProducts from "@/components/NewProducts";
+import { Category } from "@/models/Category";
 
-export default function Home({ featuredProduct, newProducts }) {
+export default function Home({ featuredProduct, newProducts, categories }) {
   return (
     <div className="flex flex-col">
       <div className="h-screen flex flex-col">
-        <Header />
+        <Header categories={categories} />
         <Featured product={featuredProduct} />
       </div>
       <NewProducts products={newProducts} />
@@ -21,6 +22,7 @@ export async function getServerSideProps() {
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   const newProducts = await Product.find().sort({ createdAt: -1 }).limit(10);
+  const categories = await Category.find({}, null, { sort: { _id: -1 } });
 
   return {
     props: {

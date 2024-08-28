@@ -3,19 +3,19 @@ import Featured from "../components/Featured";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 
-export default function Home() {
+export default function Home({ featuredProduct }) {
   return (
     <div className="flex flex-col">
       <div className="h-screen flex flex-col">
         <Header />
-        <Featured />
+        <Featured product={featuredProduct} />
       </div>
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  const featuredProductId = "asdfasd";
+  const featuredProductId = "66964e512c84a13a661c4eb6";
   await mongooseConnect();
   const featuredProduct = await Product.findById(featuredProductId);
   return {

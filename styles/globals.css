@@ -25,3 +25,9 @@ button {
 .btn-secondary {
   @apply bg-secondary text-white;
 }
+.btn-outline {
+  @apply border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white;
+}
+.box {
+  @apply rounded-lg bg-gray-100 shadow-xl;
+}

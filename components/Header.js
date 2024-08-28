@@ -9,13 +9,15 @@ import ShoppingCartIcon from "./icons/ShoppingCardIcon";
 import Hamburger from "./icons/Hamburger";
 import CloseIcon from "./icons/CloseIcon";
 
-export default function Header() {
+export default function Header({ categories }) {
   const inactiveLink =
     "hover:text-primary hover:scale-105 hover:decoration-primary decoration-secondary underline underline-offset-4 transition-all duration-300 delay-150";
   const activeLink = inactiveLink.replace(
     "decoration-secondary",
     "decoration-white"
   );
+
+  const [isHovered, setIsHovered] = useState(false);
 
   const router = useRouter();
   const { pathname } = router;
@@ -30,12 +32,14 @@ export default function Header() {
         </Link>
         <nav className="flex gap-10">
           <Link
+            onMouseEnter={() => setIsHovered(false)}
             href={"/"}
             className={`${pathname === "/" ? activeLink : inactiveLink}`}
           >
             Home
           </Link>
           <Link
+            onMouseEnter={() => setIsHovered(false)}
             href={"/products"}
             className={`${
               pathname.includes("/products") ? activeLink : inactiveLink
@@ -44,8 +48,40 @@ export default function Header() {
             All Products
           </Link>
           <div>
-            <div>Categories</div>
+            <div
+              onMouseEnter={() => setIsHovered(true)}
+              className={`${inactiveLink} relative cursor-pointer`}
+            >
+              Categories
+            </div>
           </div>
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                onMouseLeave={() => setIsHovered(false)}
+                variants={slideIn("down", "tween", 0.1, 0.3, true)}
+                initial="hidden"
+                whileInView="show"
+                exit="exit"
+                className="flex justify-center items-center absolute bg-secondary w-screen top-[80px] left-0 z-[-1] border-t border-white"
+              >
+                <div className="w-[70%] flex justify-center p-5 gap-y-5 gap-x-[150px] flex-wrap">
+                  {categories?.map((category) => (
+                    <Link
+                      className={
+                        pathname.includes("/categories/" + category._id)
+                          ? activeLink
+                          : inactiveLink
+                      }
+                      href={"/categories/" + category._id}
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
         <nav className="flex gap-10 items-center">
           <Link

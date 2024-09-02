@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
-import { Product } from "@/models/Product";
+import ProductDiv from "@/components/ProductDiv";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
-import { FaArrowLeft } from "react-icons/fa";
-import ProductDiv from "@/components/ProductDiv";
+import { Product } from "@/models/Product";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 
 export default function CategoryPage({
   category,
@@ -87,16 +87,16 @@ export default function CategoryPage({
               </button>
             )}
           </div>
-          {filteredProducts.length === 0 && (
-            <div className="text-lg">
-              No products available for this category and/or properties
-            </div>
-          )}
-          <div className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-            {filteredProducts.map((product, index) => (
-              <ProductDiv key={product._id} index={index} {...product} />
-            ))}
+        </div>
+        {filteredProducts.length === 0 && (
+          <div className="text-lg">
+            No products available for this category and/or properties.
           </div>
+        )}
+        <div className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+          {filteredProducts.map((product, index) => (
+            <ProductDiv key={product._id} index={index} {...product} />
+          ))}
         </div>
       </div>
     </Layout>
@@ -104,8 +104,8 @@ export default function CategoryPage({
 }
 
 export async function getServerSideProps(context) {
-  const { id } = context.query;
   await mongooseConnect();
+  const { id } = context.query;
 
   const category = await Category.findById(id);
   const parentId = category?.parent;

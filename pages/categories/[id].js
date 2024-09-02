@@ -11,6 +11,14 @@ export default function CategoryPage({
   properties,
   productIds,
 }) {
+
+
+const [filteredProperties, setFilteredProperties] = useState({});
+
+function setProductProp(propName, value) {
+  setFilteredProperties(prevProps => ({...prevProps, [propName]: value}));
+}
+
   return (
     <Layout>
       <div className="flex flex-col items-center gap-10 p-5">
@@ -33,6 +41,7 @@ export default function CategoryPage({
                 <div className="whitespace-nowrap capitalize">
                   {property.name}
                 </div>
+                <select onChange={(e) => setProductProp(property.name, event.target.value)}>
               </div>
             ))}
           </div>

@@ -4,6 +4,8 @@ import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
 import { FaArrowLeft } from "react-icons/fa";
+import ProductDiv from "@/components/ProductDiv";
+import axios from "axios";
 
 export default function CategoryPage({
   category,
@@ -31,6 +33,12 @@ export default function CategoryPage({
       );
     });
     setFilteredProducts(newFilteredProducts);
+  }
+
+  function fetchProducts() {
+    axios.get(`/api/products?ids=${productsIds.join(",")}`).then((response) => {
+      setFilteredProducts(response.data);
+    });
   }
 
   return (
@@ -74,6 +82,16 @@ export default function CategoryPage({
                 Apply filters
               </button>
             )}
+          </div>
+          {filteredProducts.length === 0 && (
+            <div className="text-lg">
+              No products available for this category and/or properties
+            </div>
+          )}
+          <div className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            {filteredProducts.map((product, index) => (
+              <ProductDiv key={product._id} index={index} {...product} />
+            ))}
           </div>
         </div>
       </div>

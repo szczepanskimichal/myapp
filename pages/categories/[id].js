@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -11,13 +12,26 @@ export default function CategoryPage({
   properties,
   productIds,
 }) {
+  const [filteredProperties, setFilteredProperties] = useState({});
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
+  function setProductProp(propName, value) {
+    setFilteredProperties((prevProps) => ({ ...prevProps, [propName]: value }));
+  }
 
-const [filteredProperties, setFilteredProperties] = useState({});
-
-function setProductProp(propName, value) {
-  setFilteredProperties(prevProps => ({...prevProps, [propName]: value}));
-}
+  function applyFilters() {
+    const newFilteredProducts = products.filter((product) => {
+      return Object.entries(filteredProperties).every(
+        ([filterName, filterValue]) => {
+          if (filterValue === "") {
+            return true;
+          }
+          return product.properties?.[filterName] === filterValue;
+        }
+      );
+    });
+    setFilteredProducts(newFilteredProducts);
+  }
 
   return (
     <Layout>
@@ -41,9 +55,25 @@ function setProductProp(propName, value) {
                 <div className="whitespace-nowrap capitalize">
                   {property.name}
                 </div>
-                <select onChange={(e) => setProductProp(property.name, event.target.value)}>
+                <select
+                  onChange={(e) =>
+                    setProductProp(property.name, e.target.value)
+                  }
+                >
+                  <option value="">All</option>
+                  {property.values.map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
               </div>
             ))}
+            {properties.length > 0 && (
+              <button onClick={() => applyFilters()} className="btn-outline">
+                Apply filters
+              </button>
+            )}
           </div>
         </div>
       </div>

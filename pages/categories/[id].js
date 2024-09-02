@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -16,6 +16,10 @@ export default function CategoryPage({
 }) {
   const [filteredProperties, setFilteredProperties] = useState({});
   const [filteredProducts, setFilteredProducts] = useState(products);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [category]);
 
   function setProductProp(propName, value) {
     setFilteredProperties((prevProps) => ({ ...prevProps, [propName]: value }));
@@ -36,7 +40,7 @@ export default function CategoryPage({
   }
 
   function fetchProducts() {
-    axios.get(`/api/products?ids=${productsIds.join(",")}`).then((response) => {
+    axios.get(`/api/products?ids=${productIds.join(",")}`).then((response) => {
       setFilteredProducts(response.data);
     });
   }

@@ -28,6 +28,44 @@ button {
 .btn-outline {
   @apply border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white;
 }
+button svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+button svg:active {
+  transform: none;
+}
+
+button.animate svg {
+  animation: shake 1s ease-in-out 1;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-7px) rotate(-5deg);
+  }
+  40% {
+    transform: translateY(-7px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-3deg);
+  }
+  60% {
+    transform: translateY(-7px) rotate(3deg);
+  }
+  70% {
+    transform: translateY(-7px) rotate(-1deg);
+  }
+  80% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
 .box {
   @apply rounded-lg bg-gray-100 shadow-xl;
 }

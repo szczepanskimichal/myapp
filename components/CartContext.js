@@ -1,26 +1,31 @@
 "use client";
 
+import { set } from "mongoose";
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const CartContext = createContext({});
 
 export function CartContextProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
-
-  useEffect(() => {
-    if (cartProducts?.length > 0) {
-      localStorage?.setItem("cart", JSON.stringify(cartProducts));
-    }
-  }, []);
+  const [isInitalized, setIsInitalized] = useState(false);
 
   useEffect(() => {
     if (localStorage && localStorage.getItem("cart")) {
       setCartProducts(JSON.parse(localStorage.getItem("cart")));
     }
+    setIsInitalized(true);
   }, []);
+
+  useEffect(() => {
+    if (isInitalized) {
+      localStorage.setItem("cart", JSON.stringify(cartProducts));
+    }
+  }, [cartProducts, isInitalized]);
 
   function addProduct(productId) {
     setCartProducts((prev) => [...prev, productId]);
+    toast.success("Product added to cart");
   }
 
   function removeProduct(productId) {
@@ -31,6 +36,7 @@ export function CartContextProvider({ children }) {
       }
       return prev;
     });
+    toast.error("Product removed from cart");
   }
 
   function clearCart() {

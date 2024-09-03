@@ -1,16 +1,30 @@
 import { fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 import Link from "next/link";
 import AddToCartIcon from "./icons/AddToCartIcon";
 
 export default function ProductDiv({ _id, title, images, price, index }) {
+  const { addProduct } = useContext(CartContext);
+
+  function handleAddToCart() {
+    addProduct(_id);
+    const button = document.getElementById(index).querySelector(".btn-outline");
+    button.classList.add("animate");
+    setTimeout(() => {
+      button.classList.remove("animate");
+    }, 1000);
+  }
+
   return (
     <motion.div
       variants={fadeIn("down", "spring", 0.1 * index, 1)}
       initial="hidden"
       whileInView="show"
       className="box"
+      id={index}
     >
       <div className="bg-white h-[200px] p-3 mb-2 rounded-lg flex justify-center items-center">
         <Link href={"/products/" + _id}>
@@ -28,8 +42,8 @@ export default function ProductDiv({ _id, title, images, price, index }) {
         <div className="flex gap-3 justify-between items-center mt-3">
           <p className="text-2xl font-bold">${price}</p>
 
-          <button className="btn-outline">
-            <AddToCartIcon />
+          <button className="btn-outline" onClick={() => handleAddToCart()}>
+            <AddToCartIcon className="size-7" />
             Add to Cart
           </button>
         </div>

@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
     <CartContextProvider>
       <Toaster
         position="top-center"
-        reverseOrder={false}
+        reverseOrder={false} //keeps the order of the toasts as they are triggered.
         gutter={8} // defines the spacing between toasts in pixels.
         toastOptions={{
           duration: 3000,

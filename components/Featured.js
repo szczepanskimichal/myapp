@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
-
+import { CartContext } from "@/components/CartContext";
 import AddToCartIcon from "./icons/AddToCartIcon";
 import ArrowIcon from "./icons/ArrowIcon";
 

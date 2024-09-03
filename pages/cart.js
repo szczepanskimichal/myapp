@@ -1,17 +1,22 @@
 import { CartContext } from "@/components/CartContext";
 import Layout from "@/components/Layout";
 import Table from "@/components/Table";
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 
 export default function CartPage() {
   const { cartProducts, clearCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
 
-  // useEffect(() => {
-  //     if (cartProducts.length > 0) {
-
-  //     }
-  // })
+  useEffect(() => {
+    if (cartProducts.length > 0) {
+      axios.post("/api/cart", { ids: cartProducts }).then((res) => {
+        setProducts(res.data);
+      });
+    } else {
+      setProducts([]);
+    }
+  }, [cartProducts]);
 
   return (
     <Layout>

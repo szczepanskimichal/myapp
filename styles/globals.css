@@ -31,3 +31,14 @@ button {
 .box {
   @apply rounded-lg bg-gray-100 shadow-xl;
 }
+table {
+  @apply w-full mt-5;
+}
+
+table thead tr td {
+  @apply text-sm text-gray-400 font-semibold uppercase;
+}
+
+table tr tr {
+  @apply p-3;
+}

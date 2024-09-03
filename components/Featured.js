@@ -5,9 +5,19 @@ import { fadeIn } from "@/utils/motion";
 import { CartContext } from "@/components/CartContext";
 import AddToCartIcon from "./icons/AddToCartIcon";
 import ArrowIcon from "./icons/ArrowIcon";
+import handle from "@/pages/api/products";
 
 export default function Featured({ product }) {
   const { addProduct } = useContext(CartContext);
+
+  function handleAddToCart() {
+    addProduct(product._id);
+    const button = document.querySelector(".btn-outline");
+    button.classList.add("animate");
+    setTimeout(() => {
+      button.classList.remove("animate");
+    }, 1000);
+  }
   return (
     <div className="p-10 bg-black text-white flex-grow flex items-center justify-center">
       <div className="flex flex-col md:grid grid-cols-2 lg:grid-cols-3 gap-[40px] mt-[80px]">
@@ -24,10 +34,7 @@ export default function Featured({ product }) {
               <Link href={"/products/" + product._id}>
                 <button className="btn-secondary">Read More</button>
               </Link>
-              <button
-                className="btn-primary"
-                onClick={() => addProduct(product._id)}
-              >
+              <button className="btn-primary" onClick={() => handleAddToCart()}>
                 <AddToCartIcon />
                 Add to Cart
               </button>

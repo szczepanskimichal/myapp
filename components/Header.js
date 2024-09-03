@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { CartContext } from "@/components/CartContext";
 
 import { slideIn } from "@/utils/motion";
 import UserIcon from "./icons/UserIcon";
@@ -18,6 +19,8 @@ export default function Header({ categories }) {
   );
 
   const [isHovered, setIsHovered] = useState(false);
+
+  const { cartProducts } = useContext(CartContext);
 
   const router = useRouter();
   const { pathname } = router;
@@ -94,7 +97,7 @@ export default function Header({ categories }) {
             <div className="flex items-center h-[60px] relative transition delay-150 duration-300 group-hover:text-primary">
               <ShoppingCartIcon />
               <div className="absolute top-2 left-4 bg-secondary text-white border-2 border-white rounded-full items-center justify-center flex size-5 text-xs transition delay-150 duration-300 group-hover:text-primary group-hover:border-primary">
-                0
+                {cartProducts.length}
               </div>
             </div>
           </Link>
@@ -116,7 +119,7 @@ export default function Header({ categories }) {
           <div className="flex items-center h-[60px] relative transition delay-150 duration-300 group-hover:text-primary">
             <ShoppingCartIcon />
             <div className="absolute top-2 left-4 bg-secondary text-white border-2 border-white rounded-full items-center justify-center flex size-5 text-xs transition delay-150 duration-300 group-hover:text-primary group-hover:border-primary">
-              0
+              {cartProducts.length}
             </div>
           </div>
         </Link>

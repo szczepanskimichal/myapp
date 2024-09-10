@@ -2,6 +2,7 @@ import { fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import { product } from "../models/Product";
 
 import Link from "next/link";
 import AddToCartIcon from "./icons/AddToCartIcon";

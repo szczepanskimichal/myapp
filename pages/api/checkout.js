@@ -1,9 +1,7 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Order } from "@/models/Order";
 import { Product } from "@/models/Product";
-
 const stripe = require("stripe")(process.env.STRIPE_SK);
-
 export default async function handle(req, res) {
   if (req.method !== "POST") {
     res.json("Should be a POST request");
@@ -18,12 +16,10 @@ export default async function handle(req, res) {
     country,
     cartProducts,
   } = req.body;
-
   await mongooseConnect();
   const productsIds = cartProducts;
   const uniqueIds = [...new Set(productsIds)];
   const productsInfos = await Product.find({ _id: uniqueIds });
-
   let line_items = [];
   for (const productId of uniqueIds) {
     const productInfo = productsInfos.find(
@@ -41,7 +37,6 @@ export default async function handle(req, res) {
       });
     }
   }
-
   const orderDoc = await Order.create({
     line_items,
     name,

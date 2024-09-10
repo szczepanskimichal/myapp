@@ -7,6 +7,6 @@ export default async function handle(req, res) {
   if (req.method === "GET") {
     const categories = await Category.find();
     categories.sort((a, b) => a.name.localeCompare(b.name));
-    res.json(await Category.find());
+    res.json(categories);
   }
 }

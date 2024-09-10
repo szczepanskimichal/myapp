@@ -2,10 +2,9 @@ import { fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import { product } from "../models/Product";
 
 import Link from "next/link";
-import AddToCartIcon from "./icons/AddToCartIcon";
+import ShoppingCartIcon from "./icons/ShoppingCardIcon";
 
 export default function ProductDiv({ _id, title, images, price, index }) {
   const { addProduct } = useContext(CartContext);
@@ -44,7 +43,7 @@ export default function ProductDiv({ _id, title, images, price, index }) {
           <p className="text-2xl font-bold">${price}</p>
 
           <button className="btn-outline" onClick={() => handleAddToCart()}>
-            <AddToCartIcon className="size-7" />
+            <ShoppingCartIcon className="size-7" />
             Add to Cart
           </button>
         </div>

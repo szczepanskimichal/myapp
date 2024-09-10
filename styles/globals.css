@@ -88,3 +88,9 @@ table tr tr {
 img {
   @apply max-w-[100%] max-h-[100%];
 }
+
+input,
+textarea,
+select {
+  @apply border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:border-primary mb-1 w-full shadow-md;
+}

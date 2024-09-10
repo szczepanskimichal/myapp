@@ -6,6 +6,13 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
+
+@media (max-width: 470px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
 h1 {
   @apply text-4xl sm:text-6xl font-semibold mb-3;
 }

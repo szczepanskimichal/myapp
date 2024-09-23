@@ -1,25 +1,32 @@
 import { AnimatePresence } from "framer-motion";
+import ErrorMessage from "./ErrorMessage";
 
 export default function FormInput({
   label,
   type,
   value,
   onChange,
-  creatingUser,
+  creating,
   error,
+  correct,
+  incorrect,
 }) {
   return (
     <>
       <div className="flex justify-between">
         <label>{label}</label>
-        <AnimatePresence>{error !== null && <ErrorMessage />}</AnimatePresence>
+        <AnimatePresence>
+          {error !== null && (
+            <ErrorMessage message={error ? incorrect : correct} error={error} />
+          )}
+        </AnimatePresence>
       </div>
       <input
         type={type}
         placeholder={label}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        disabled={creatingUser}
+        disabled={creating}
       />
     </>
   );

@@ -101,3 +101,7 @@ textarea,
 select {
   @apply border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:border-primary mb-1 w-full shadow-md;
 }
+
+.box-height {
+  height: calc(100vh - 170px);
+}

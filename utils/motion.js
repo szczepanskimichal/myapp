@@ -9,7 +9,7 @@ export const dropIn = {
     transition: {
       duration: 1,
       type: "spring",
-      damping: 20,
+      damping: 30,
       stiffness: 300,
     },
   },

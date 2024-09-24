@@ -6,6 +6,13 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
+
+@media (max-width: 470px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
 h1 {
   @apply text-4xl sm:text-6xl font-semibold mb-3;
 }
@@ -29,9 +36,11 @@ button {
 .btn-secondary {
   @apply bg-secondary text-white;
 }
+
 .btn-outline {
   @apply border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white;
 }
+
 button svg {
   transition: transform 0.2s ease-in-out;
 }
@@ -70,9 +79,11 @@ button.animate svg {
     transform: translateY(0) rotate(0deg);
   }
 }
+
 .box {
   @apply rounded-lg bg-gray-100 shadow-xl;
 }
+
 table {
   @apply w-full mt-5;
 }
@@ -82,7 +93,7 @@ table thead tr td {
 }
 
 table tr td {
-  @apply max-w-[100%] max-h-[100%];
+  @apply p-3;
 }
 
 img {
@@ -93,4 +104,12 @@ input,
 textarea,
 select {
   @apply border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:border-primary mb-1 w-full shadow-md;
+}
+
+label {
+  @apply text-sm text-gray-500;
+}
+
+.box-height {
+  min-height: calc(100vh - 120px);
 }

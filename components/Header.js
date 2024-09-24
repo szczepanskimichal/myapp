@@ -9,8 +9,6 @@ import UserIcon from "./icons/UserIcon";
 import ShoppingCartIcon from "./icons/ShoppingCardIcon";
 import Hamburger from "./icons/Hamburger";
 import CloseIcon from "./icons/CloseIcon";
-import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
 
 export default function Header({ categories }) {
   const inactiveLink =
@@ -25,8 +23,7 @@ export default function Header({ categories }) {
   const { cartProducts } = useContext(CartContext);
 
   const router = useRouter();
-  const pathname = usePathname();
-  const session = useSession();
+  const { pathname } = router;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -90,7 +87,6 @@ export default function Header({ categories }) {
           </AnimatePresence>
         </nav>
         <nav className="flex gap-10 items-center">
-          <div>{session?.data?.user.email}</div>
           <Link
             href={"/account/profile"}
             className="transition delay-150 duration-300 hover:text-primary"

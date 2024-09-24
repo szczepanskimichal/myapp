@@ -6,13 +6,6 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
-
-@media (max-width: 470px) {
-  html {
-    scroll-padding-top: 70px;
-  }
-}
-
 h1 {
   @apply text-4xl sm:text-6xl font-semibold mb-3;
 }
@@ -100,8 +93,4 @@ input,
 textarea,
 select {
   @apply border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:border-primary mb-1 w-full shadow-md;
-}
-
-.box-height {
-  height: calc(100vh - 170px);
 }

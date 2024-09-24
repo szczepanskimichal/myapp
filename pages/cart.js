@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CartContext } from "@/components/CartContext";
 import Layout from "@/components/Layout";
 import Table from "@/components/Table";
@@ -6,11 +7,10 @@ import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
 import UserForm from "@/components/UserForm";
-import Link from "next/link";
 
 function checkMobile() {
   if (typeof window !== "undefined") {
-    return window.innerWidth < 640 ? true : false;
+    return window.innerWidth < 640;
   }
   return false;
 }
@@ -18,10 +18,10 @@ function checkMobile() {
 export default function CartPage() {
   const { cartProducts, clearCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
-
+  const [isSuccess, setIsSuccess] = useState(false); // Moved this state to properly manage success status
   const [isMobile, setIsMobile] = useState(checkMobile());
 
+  // Handle mobile check on resize
   useEffect(() => {
     function handleResize() {
       setIsMobile(checkMobile());
@@ -32,25 +32,24 @@ export default function CartPage() {
     };
   }, []);
 
+  // Fetch products in the cart
   useEffect(() => {
-    if (cartProducts.length > 0) {
+    if (cartProducts?.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((response) => {
         setProducts(response.data);
       });
-    } else {
-      setProducts([]);
     }
   }, [cartProducts]);
 
+  // Check for success URL and clear the cart
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    if (window?.location.href.includes("success")) {
+    if (typeof window === "undefined") return;
+
+    if (window.location.href.includes("success")) {
       setIsSuccess(true);
       clearCart();
     }
-  }, []);
+  }, [clearCart]);
 
   if (isSuccess) {
     return (
@@ -59,7 +58,7 @@ export default function CartPage() {
           <h2 className="text-center">Your payment was successful!</h2>
           <p>Please check your email for details.</p>
           <Link href="/" className="mt-5">
-            <button onClick={() => clearCart()} className="btn-outline">
+            <button onClick={clearCart} className="btn-outline">
               Go back to shopping
             </button>
           </Link>

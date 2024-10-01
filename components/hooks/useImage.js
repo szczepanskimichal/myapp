@@ -1,19 +1,47 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+// import useProfile from "./useProfile";
+
+// export default function useImage() {
+// 	const [userImage, setUserImage] = useState(null);
+// 	const [loading, setLoading] = useState(true);
+
+// 	const { user, loading: profileLoading } = useProfile();
+
+// 	useEffect(() => {
+// 		if (user?.image) {
+// 			setLoading(true);
+// 			setUserImage(user.image);
+// 			setLoading(false);
+// 		}
+// 	}, [profileLoading]);
+
+// 	return { userImage, setUserImage, loading };
+// }
+
+import { createContext, useContext, useEffect, useState } from "react";
 import useProfile from "./useProfile";
 
-export default function useImage() {
-  const [userImage, setUserImage] = useState(null);
-  const [loading, setLoading] = useState(true);
+const ImageContext = createContext();
 
-  const { user, loading: profileLoading } = useProfile();
+export const ImageProvider = ({ children }) => {
+	const [userImage, setUserImage] = useState(null);
+	const [loading, setLoading] = useState(null);
 
-  useEffect(() => {
-    if (user?.image) {
-      setLoading(true);
-      setUserImage(user.image);
-      setLoading(false);
-    }
-  }, [profileLoading]);
+	const { user, loading: profileLoading } = useProfile();
 
-  return { userImage, setUserImage, loading };
-}
+	useEffect(() => {
+		if (user?.image) {
+			setLoading(true);
+			setUserImage(user.image);
+			setLoading(false);
+		}
+	}, [profileLoading]);
+
+	return (
+		<ImageContext.Provider value={{ userImage, setUserImage, loading }}>
+			{children}
+		</ImageContext.Provider>
+	);
+};
+
+export const useImage = () => useContext(ImageContext);

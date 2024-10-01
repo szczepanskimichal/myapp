@@ -45,9 +45,14 @@ export default function EditableImage({ image, setImage }) {
             <img
               className="w-full h-full object-cover rounded-full cursor-pointer"
               src={image}
+              onClick={() => setFullImage(true)}
               alt=""
             />
-            {fullImage && <Backdrop></Backdrop>}
+            {fullImage && (
+              <Backdrop handleClose={() => setFullImage(false)}>
+                <img className="rounded-lg max-h-[85vh]" src={image} alt="" />
+              </Backdrop>
+            )}
           </>
         ) : (
           <UserIcon className="text-gray-500" />

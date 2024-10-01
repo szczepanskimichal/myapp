@@ -16,6 +16,7 @@
     "aws-sdk": "^2.1691.0",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
+    "docker": "^0.2.14",
     "formidable": "^3.5.1",
     "framer-motion": "^11.3.0",
     "micro": "^10.0.1",

@@ -131,6 +131,10 @@ Kopier kode
 npm run dev
 The application will be available at http://localhost:3000.
 
+Additionally, a separate repository has been created for the database, which I developed to complement this e-commerce application. The database handles all aspects of data management, including product details, user information, orders, categories, and more. It is structured using MongoDB with Mongoose models to ensure efficient data storage and retrieval. This external repository manages the back-end data architecture, providing seamless integration with the main web app.
+
+This separation of concerns between the front-end (this repository) and the back-end (database repository) enhances modularity, making the project easier to manage, scale, and maintain.
+
 Future Improvements
 User Reviews: Allow users to leave reviews and ratings for products.
 AI-based Recommendations: Implement machine learning to suggest products.

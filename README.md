@@ -135,25 +135,45 @@ Getting Started
 To get a local copy of the project up and running, follow these steps:
 
 Prerequisites
+
 Node.js: Install from Node.js
+
 MongoDB: Set up a MongoDB database locally or on MongoDB Atlas.
+
 Installation
+
 Clone the repository:
+
 bash
+
 Kopier kode
+
 git clone https://github.com/szczepanskimichal/myapp.git
+
 Navigate to the project directory:
+
 bash
+
 Kopier kode
+
 cd myapp
+
 Install dependencies:
+
 bash
+
 Kopier kode
+
 npm install
+
 Run the development server:
+
 bash
+
 Kopier kode
+
 npm run dev
+
 The application will be available at http://localhost:3000.
 
 Additionally, a separate repository has been created for the database, which I developed to complement this e-commerce application. The database handles all aspects of data management, including product details, user information, orders, categories, and more. It is structured using MongoDB with Mongoose models to ensure efficient data storage and retrieval. This external repository manages the back-end data architecture, providing seamless integration with the main web app.
@@ -161,13 +181,19 @@ Additionally, a separate repository has been created for the database, which I d
 This separation of concerns between the front-end (this repository) and the back-end (database repository) enhances modularity, making the project easier to manage, scale, and maintain.
 
 Future Improvements
+
 User Reviews: Allow users to leave reviews and ratings for products.
+
 AI-based Recommendations: Implement machine learning to suggest products.
+
 Analytics: Integrate Google Analytics for user tracking.
+
 Author
+
 Szczeoanski Michal
 
 LinkedIn
+
 GitHub
 
 ENV EXAMPLE:

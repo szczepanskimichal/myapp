@@ -20,18 +20,23 @@ Responsive Design: A mobile-friendly design ensures accessibility across all dev
 Project Structure
 
 myapp/
+
 ├── .next/ # Generated files by Next.js during the build (do not edit)
+
 ├── components/ # Reusable UI components
+
 │ ├── hooks/ # Custom React hooks
 │ │ ├── CartContext.js
 │ │ ├── useImage.js
 │ │ ├── useProfile.js
 │ │ └── useWishlist.js
+
 │ ├── icons/ # Reusable icon components
 │ │ ├── CartIcon.js
 │ │ ├── OrdersIcon.js
 │ │ ├── ProfileIcon.js
 │ │ └── SettingsIcon.js
+
 │ ├── AccountLayout.js
 │ ├── AuthButton.js
 │ ├── Backdrop.js
@@ -39,33 +44,45 @@ myapp/
 │ ├── Header.js
 │ ├── ProductDiv.js
 │ └── Spinner.js
+
 ├── lib/ # Utility files
 │ ├── mongodb.js
 │ └── mongoose.js
+
 ├── models/ # Database schemas (Mongoose models)
 │ ├── Category.js
 │ ├── Order.js
 │ ├── Product.js
 │ └── User.js
+
 ├── pages/ # Next.js pages
+
 │ ├── account/ # User account pages
 │ │ ├── orders.js
 │ │ ├── profile.js # User profile page
 │ │ ├── settings.js
 │ │ └── wishlist.js
+
 │ ├── api/ # API routes
 │ │ └── [...nextauth].js # NextAuth.js for user authentication
+
 │ ├── index.js # Home page
 │ ├── login.js # Login page
 │ ├── register.js # Registration page
+
 │ └── products/ # Dynamic product pages
 ├── public/ # Public assets (images, icons)
+
 │ ├── favicon.ico
 │ └── images/
+
 ├── styles/ # Global and component-specific CSS styles
+
 │ └── globals.css
+
 ├── utils/ # Helper functions
 │ └── motion.js
+
 ├── .env.example # Environment variables example
 ├── .eslintrc.json # ESLint configuration
 ├── jsconfig.json # JavaScript configuration
@@ -87,13 +104,21 @@ NextAuth.js: Authentication library for user login and registration, with Google
 Screenshots
 
 ![Homepage](public/images/1.png)
+
 ![Homepage](public/images/2.png)
+
 ![Homepage](public/images/3.png)
+
 ![Homepage](public/images/4.png)
+
 ![Homepage](public/images/5.png)
+
 ![Homepage](public/images/6.png)
+
 ![Homepage](public/images/7.png)
+
 ![Homepage](public/images/8.png)
+
 ![Homepage](public/images/9.png)
 
 Live Demo
@@ -146,31 +171,13 @@ LinkedIn
 GitHub
 
 ENV EXAMPLE:
-
-# Google OAuth credentials
-
 GOOGLE_ID=
 GOOGLE_SECRET=
-
-# MongoDB connection URI
-
 MONGODB_URI=
-
-# JWT Secret key for NextAuth.js
-
 SECRET=
-
-# AWS credentials for file uploads
-
 AWS_ACCESS_KEY=
 AWS_SECRET_KEY=
 AWS_BUCKET_NAME=
-
-# Stripe API keys for payment processing
-
 STRIPE_PK=
 STRIPE_SK=
-
-# Public URL for your development environment
-
 PUBLIC_URL="http://localhost:3000"

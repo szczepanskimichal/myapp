@@ -103,35 +103,40 @@ NextAuth.js: Authentication library for user login and registration, with Google
 
 Screenshots
 
-![Homepage](public/images/1.png)
+![Homepage](public/1.png)
 
-![Homepage](public/images/2.png)
+![Homepage](public/2.png)
 
-![Homepage](public/images/3.png)
+![LoginPage](public/3.png)
 
-![Homepage](public/images/4.png)
+![LoginPage](public/4.png)
 
-![Homepage](public/images/5.png)
+![AllProductsPage](public/5.png)
 
-![Homepage](public/images/6.png)
+![WishlistPage](public/6.png)
 
-![Homepage](public/images/7.png)
+![Carte/Order](public/7.png)
 
-![Homepage](public/images/8.png)
+![CategoryPage](public/8.png)
 
-![Homepage](public/images/9.png)
-
-Live Demo
-Check out the live demo: MyShop Live Demo
+![LogoutPage](public/9.png)
 
 Features
+
 User Authentication: Register and log in to your account, or use Google login.
+
 Profile Management: Edit user data and upload a profile picture.
+
 Product Browsing: Search and filter products, add items to the cart or wishlist.
+
 Shopping Cart: Add, remove, and manage items in the cart.
+
 Payment Integration: Seamlessly pay for orders using Stripe.
+
 Order Management: Track previous orders through your account dashboard.
+
 Getting Started
+
 To get a local copy of the project up and running, follow these steps:
 
 Prerequisites

@@ -1,7 +1,11 @@
 MyShop
+
 Version: 0.1.0
+
 Homepage: MyShop
+
 Type: Web Application (Next.js)
+
 Privacy: Public
 
 Project Overview
@@ -26,54 +30,83 @@ myapp/
 ├── components/ # Reusable UI components
 
 │ ├── hooks/ # Custom React hooks
+
 │ │ ├── CartContext.js
+
 │ │ ├── useImage.js
+
 │ │ ├── useProfile.js
+
 │ │ └── useWishlist.js
 
 │ ├── icons/ # Reusable icon components
+
 │ │ ├── CartIcon.js
+
 │ │ ├── OrdersIcon.js
+
 │ │ ├── ProfileIcon.js
+
 │ │ └── SettingsIcon.js
 
 │ ├── AccountLayout.js
+
 │ ├── AuthButton.js
+
 │ ├── Backdrop.js
+
 │ ├── EditableImage.js # For editing profile pictures
+
 │ ├── Header.js
+
 │ ├── ProductDiv.js
+
 │ └── Spinner.js
 
 ├── lib/ # Utility files
+
 │ ├── mongodb.js
+
 │ └── mongoose.js
 
 ├── models/ # Database schemas (Mongoose models)
+
 │ ├── Category.js
+
 │ ├── Order.js
+
 │ ├── Product.js
+
 │ └── User.js
 
 ├── pages/ # Next.js pages
 
 │ ├── account/ # User account pages
+
 │ │ ├── orders.js
+
 │ │ ├── profile.js # User profile page
+
 │ │ ├── settings.js
+
 │ │ └── wishlist.js
 
 │ ├── api/ # API routes
+
 │ │ └── [...nextauth].js # NextAuth.js for user authentication
 
 │ ├── index.js # Home page
+
 │ ├── login.js # Login page
+
 │ ├── register.js # Registration page
 
 │ └── products/ # Dynamic product pages
+
 ├── public/ # Public assets (images, icons)
 
 │ ├── favicon.ico
+
 │ └── images/
 
 ├── styles/ # Global and component-specific CSS styles
@@ -81,24 +114,37 @@ myapp/
 │ └── globals.css
 
 ├── utils/ # Helper functions
+
 │ └── motion.js
 
 ├── .env.example # Environment variables example
+
 ├── .eslintrc.json # ESLint configuration
+
 ├── jsconfig.json # JavaScript configuration
+
 ├── next.config.js # Next.js configuration
+
 ├── package.json # npm package configuration
-└── README.md # Project documentation
+
+└── README.md # Project documentation¨
 
 Technologies Used
 
 React.js: Frontend framework for building user interfaces.
+
 Next.js: Framework for React that supports server-side rendering and static website generation.
+
 Node.js: Backend environment to run JavaScript on the server.
+
 MongoDB: NoSQL database used to store product, user, and order information.
+
 Mongoose: Object Data Modeling (ODM) library for MongoDB.
+
 Stripe: Payment gateway integration for handling payments.
+
 Tailwind CSS: Utility-first CSS framework for styling.
+
 NextAuth.js: Authentication library for user login and registration, with Google Login integration.
 
 Screenshots
@@ -202,13 +248,23 @@ LinkedIn
 GitHub
 
 ENV EXAMPLE:
+
 GOOGLE_ID=
+
 GOOGLE_SECRET=
+
 MONGODB_URI=
+
 SECRET=
+
 AWS_ACCESS_KEY=
+
 AWS_SECRET_KEY=
+
 AWS_BUCKET_NAME=
+
 STRIPE_PK=
+
 STRIPE_SK=
+
 PUBLIC_URL="http://localhost:3000"

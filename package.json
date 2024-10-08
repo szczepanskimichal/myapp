@@ -14,7 +14,7 @@
     "@auth/mongodb-adapter": "^3.4.2",
     "@aws-sdk/client-s3": "^3.629.0",
     "aws-sdk": "^2.1691.0",
-    "axios": "^1.7.2",
+    "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "docker": "^0.2.14",
     "formidable": "^3.5.1",

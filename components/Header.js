@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideIn } from "@/utils/motion";
@@ -215,14 +214,59 @@ export default function Header({ categories }) {
                   <Link className={inactiveLink} href={"/"}>
                     Home
                   </Link>
-                  <Link className={inactiveLink} href={"/"}>
+                  <Link className={inactiveLink} href={"/products"}>
                     All Products
                   </Link>
-                  <Link className={inactiveLink} href={"/"}>
-                    Categories
-                  </Link>
+                  <div>
+                    <div className={`${inactiveLink} cursor-pointer`}>
+                      Categories
+                    </div>
+                    <div className="flex flex-col  ml-5 mt-2 p-1 mb-7">
+                      {categories?.map((category) => (
+                        <Link
+                          key={category._id}
+                          className={inactiveLink}
+                          href={"/categories/" + category._id}
+                          className="p-2"
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </nav>
                 <nav className="flex flex-col gap-10 justify-center">
+                  {!loading && session?.status !== "loading" && (
+                    <>
+                      {session.status === "authenticated" ? (
+                        <Link
+                          href={"/account/profile"}
+                          className="flex gap-3 items-center"
+                        >
+                          {userImage ? (
+                            <img
+                              className="size-9 rounded-full object-cover"
+                              src={userImage}
+                              alt="User Image"
+                            />
+                          ) : (
+                            <UserIcon className="size-7" />
+                          )}
+                          <span>Account</span>
+                        </Link>
+                      ) : (
+                        <div
+                          className="flex gap-3 items-center cursor-pointer"
+                          onClick={() => setUserButton((prev) => !prev)}
+                        >
+                          <UserIcon className="size-7" />
+                          <span>Login / Signup</span>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </nav>
+                {/* <nav className="flex flex-col gap-10 justify-center">
                   <Link href={"/account"} className="flex gap-3 items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -240,7 +284,7 @@ export default function Header({ categories }) {
                     </svg>
                     Account
                   </Link>
-                </nav>
+                </nav> */}
               </div>
             </motion.nav>
           )}

@@ -226,8 +226,7 @@ export default function Header({ categories }) {
                         <Link
                           key={category._id}
                           className={inactiveLink}
-                          href={"/categories/" + category._id}
-                          className="p-2"
+                          href={"/categories/" + category?._id}
                         >
                           {category.name}
                         </Link>
@@ -235,57 +234,40 @@ export default function Header({ categories }) {
                     </div>
                   </div>
                 </nav>
-                <nav className="flex flex-col gap-10 justify-center">
-                  {!loading && session?.status !== "loading" && (
-                    <>
-                      {session.status === "authenticated" ? (
-                        <Link
-                          href={"/account/profile"}
-                          className="flex gap-3 items-center"
-                        >
-                          {userImage ? (
-                            <img
-                              className="size-9 rounded-full object-cover"
-                              src={userImage}
-                              alt="User Image"
-                            />
-                          ) : (
-                            <UserIcon className="size-7" />
-                          )}
-                          <span>Account</span>
-                        </Link>
-                      ) : (
-                        <div
-                          className="flex gap-3 items-center cursor-pointer"
-                          onClick={() => setUserButton((prev) => !prev)}
-                        >
-                          <UserIcon className="size-7" />
-                          <span>Login / Signup</span>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </nav>
-                {/* <nav className="flex flex-col gap-10 justify-center">
-                  <Link href={"/account"} className="flex gap-3 items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-9"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                      />
-                    </svg>
-                    Account
-                  </Link>
-                </nav> */}
               </div>
+              <nav className="flex flex-col gap-10 justify-center mt-3 w-full items-start ">
+                {!loading && session?.status !== "loading" && (
+                  <>
+                    {session.status === "authenticated" ? (
+                      <Link
+                        href={"/account/profile"}
+                        className="flex gap-3 items-center"
+                      >
+                        {userImage ? (
+                          <img
+                            className="size-9 rounded-full object-cover"
+                            src={userImage}
+                            alt="User Image"
+                          />
+                        ) : (
+                          <UserIcon className="size-7" />
+                        )}
+                        <span>Account</span>
+                      </Link>
+                    ) : (
+                      <div
+                        className="flex gap-3 items-center cursor-pointer"
+                        onClick={() => setUserButton((prev) => !prev)}
+                      >
+                        <Link href="/login">
+                          <UserIcon className="flex inline-flex size-6 m-4" />
+                          Login / Signup
+                        </Link>
+                      </div>
+                    )}
+                  </>
+                )}
+              </nav>
             </motion.nav>
           )}
         </AnimatePresence>

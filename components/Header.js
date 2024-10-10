@@ -221,27 +221,27 @@ export default function Header({ categories }) {
                     <div className={`${inactiveLink} cursor-pointer`}>
                       Categories
                     </div>
-                    <div className="flex flex-col  ml-5 mt-2 p-1 mb-7">
+                    <div className="flex flex-col gap-5 m-7">
                       {categories?.map((category) => (
                         <Link
                           key={category._id}
                           className={inactiveLink}
                           href={"/categories/" + category?._id}
                         >
-                          {category.name}
+                          <div>{category.name}</div>
                         </Link>
                       ))}
                     </div>
                   </div>
                 </nav>
               </div>
-              <nav className="flex flex-col gap-10 justify-center mt-3 w-full items-start ">
+              <nav className=" flex flex-col gap-10  justify-center mt-3 w-full items-start ">
                 {!loading && session?.status !== "loading" && (
                   <>
                     {session.status === "authenticated" ? (
                       <Link
                         href={"/account/profile"}
-                        className="flex gap-3 items-center"
+                        className="flex gap-3 items-center my-10"
                       >
                         {userImage ? (
                           <img
@@ -255,15 +255,15 @@ export default function Header({ categories }) {
                         <span>Account</span>
                       </Link>
                     ) : (
-                      <div
-                        className="flex gap-3 items-center cursor-pointer"
-                        onClick={() => setUserButton((prev) => !prev)}
-                      >
-                        <Link href="/login">
-                          <UserIcon className="flex inline-flex size-6 m-4" />
+                      <Link href="/login" className="mt-10">
+                        <span
+                          className="flex gap-3 items-center cursor-pointer"
+                          onClick={() => setUserButton((prev) => !prev)}
+                        >
+                          <UserIcon className="flex inline-flex size-7" />
                           Login / Signup
-                        </Link>
-                      </div>
+                        </span>
+                      </Link>
                     )}
                   </>
                 )}

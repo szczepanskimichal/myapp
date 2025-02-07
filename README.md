@@ -25,7 +25,7 @@ Deployment
 
 The project is implemented on Vercel and is available at the following link:
 
-[See the implementation on Vercel] (https://vercel.com/michals-projects-83e62ca5/myapp)
+[See the implementation on Vercel] ([https://vercel.com/michals-projects-83e62ca5/myapp](https://myapp-o7c4qppqg-michals-projects-83e62ca5.vercel.app/))
 
 Project Structure
 

@@ -1,4 +1,4 @@
-MyShop
+MyApp
 
 Version: 0.1.0
 
@@ -20,6 +20,12 @@ Profile Management: Users can update their profile information, including profil
 Cart & Wishlist: Users can add products to their cart or wishlist for future purchases.
 Order Tracking: Users can view and track their previous orders from the account section.
 Responsive Design: A mobile-friendly design ensures accessibility across all device types.
+
+Deployment
+
+The project is implemented on Vercel and is available at the following link:
+
+[See the implementation on Vercel] (https://vercel.com/michals-projects-83e62ca5/myapp)
 
 Project Structure
 

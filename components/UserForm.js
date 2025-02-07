@@ -124,15 +124,15 @@ export default function UserForm({ user, onSubmit, cartProducts }) {
           Save all changes
         </button>
       )}
-      {/* {pathname.includes("cart") && (
-				<button
-					type="button"
-					onClick={goToPayment}
-					className="btn-secondary w-full justify-center mt-3"
-				>
-					Continue to payment
-				</button>
-			)} */}
+      {pathname.includes("cart") && (
+        <button
+          type="button"
+          onClick={goToPayment}
+          className="btn-secondary w-full justify-center mt-3"
+        >
+          Continue to payment
+        </button>
+      )}
     </form>
   );
 }
